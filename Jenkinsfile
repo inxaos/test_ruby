@@ -1,11 +1,12 @@
 #!groovy
 
-githubNotify description: 'Starting build',  status: 'PENDING'
+//githubNotify description: 'Starting build',  status: 'PENDING'
 
 try {
 	stage('Bundle Install'){
 		node('linux'){
 			docker.image('ruby:2.4.2-stretch').inside{
+				//checkout scm
 				sh 'bundle install'
 			}
 		}
@@ -24,7 +25,7 @@ try {
 			}
 		}
 	}
-	githubNotify description: 'Completed build',  status: 'SUCCESS'
+	//githubNotify description: 'Completed build',  status: 'SUCCESS'
 } catch (Exception e){
-	githubNotify description: 'Error with build',  status: 'ERROR'
+	//githubNotify description: 'Error with build',  status: 'ERROR'
 }
