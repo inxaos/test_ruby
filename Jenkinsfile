@@ -6,6 +6,7 @@ try {
 	stage('Bundle Install'){
 		node('linux'){
 			docker.image('ruby:2.4.2-stretch').inside{
+				sh 'mkdir /source && cd /source'
 				checkout scm
 				sh 'bundle install'
 			}
