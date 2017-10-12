@@ -5,7 +5,7 @@ node('linux'){
 	checkout scm
 	stage('Build') {
 		docker.image('ruby:2.4.2-stretch').inside{
-			sh './build.sh'
+			sh 'chmod +x ./build.sh; ./build.sh'
 		}
 	}
 	stage('Test'){
